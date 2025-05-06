@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  sql1:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      ACCEPT_EULA: Y
+      MSSQL_SA_PASSWORD: P@ssw0rd
+    ports:
+      - '1433:1433'
+    volumes:
+      - db_data:/var/opt/mssql
+volumes:
+  db_data:
+# 初期実行
+# コンテナに入って以下を実行する
+# $ /opt/mssql-tools18/bin/sqlcmd -S localhost -C -U sa -P "P@ssw0rd"
+# 1> CREATE DATABASE myworkflow COLLATE Japanese_BIN;
+# 2> GO
+# 1> select name from sys.databases;
+# 2> GO
