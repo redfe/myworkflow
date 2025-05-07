@@ -1,8 +1,13 @@
+import type { LayoutServerLoad } from './$types';
 import { m } from '$lib/paraglide/messages';
 
-export function load() {
+/**
+ * 設定ページのレイアウトロード関数
+ * 設定ページのタイトルとパンくずリストを設定します
+ */
+export const load: LayoutServerLoad = () => {
 	return {
 		title: m.page_title_setting(),
 		breadCrumbs: [{ label: m.page_title_home(), href: '/' }]
 	};
-}
+};

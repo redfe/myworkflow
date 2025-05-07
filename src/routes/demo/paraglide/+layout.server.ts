@@ -1,6 +1,11 @@
+import type { LayoutServerLoad } from './$types';
 import { m } from '$lib/paraglide/messages';
 
-export function load() {
+/**
+ * 多言語化デモページのレイアウトロード関数
+ * 多言語化デモページのタイトルとパンくずリストを設定します
+ */
+export const load: LayoutServerLoad = () => {
 	return {
 		title: m.page_title_i18n(),
 		breadCrumbs: [
@@ -8,4 +13,4 @@ export function load() {
 			{ label: m.page_title_demo(), href: '/demo' }
 		]
 	};
-}
+};

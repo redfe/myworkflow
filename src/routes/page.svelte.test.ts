@@ -4,8 +4,8 @@ import { render, screen } from '@testing-library/svelte';
 import Page from './+page.svelte';
 
 describe('/+page.svelte', () => {
-	test('should render Welcome', () => {
+	test('should render ホーム', () => {
 		render(Page);
-		expect(screen.getByText('Welcome', { exact: false })).toBeInTheDocument();
+		expect(screen.getByText('ホーム', { exact: false })).toBeInTheDocument();
 	});
 });

@@ -1,7 +1,13 @@
-export function load() {
-	// 画面毎に違う値かつ描画を遅延させたくないものは +layout.server.ts に記載する
-	// 記載対象例：タイトルなど遅延があるとユーザーに不快感を与えるもの
+import type { LayoutServerLoad } from './$types';
+import { m } from '$lib/paraglide/messages';
+
+/**
+ * ルートレイアウトのサーバーサイドロード関数
+ * ページのタイトルとパンくずリストの初期値を設定します
+ */
+export const load: LayoutServerLoad = () => {
 	return {
+		title: m.page_title_home(),
 		breadCrumbs: []
 	};
-}
+};
