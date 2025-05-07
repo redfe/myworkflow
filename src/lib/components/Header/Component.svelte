@@ -1,22 +1,17 @@
 <script lang="ts">
 	import { AppBar } from '@skeletonlabs/skeleton-svelte';
-	import {
-		ArrowLeftIcon,
-		PaperclipIcon,
-		CalendarIcon,
-		CircleUserIcon,
-		MenuIcon
-	} from '@lucide/svelte';
+	import { ArrowLeftIcon, MenuIcon, LogOutIcon } from '@lucide/svelte';
 	import { m } from '$lib/paraglide/messages';
 	import type { HeaderProps } from './types';
+	import { Link } from '$lib/components/Link';
 
 	const { breadCrumbs, pageTitle }: HeaderProps = $props();
 </script>
 
 <AppBar
-	background="preset-filled-surface-400-600 opacity-80 sm:space-y-0"
+	background="preset-filled-surface-50-950"
+	classes="opacity-80 sm:space-y-0"
 	headlineClasses="sm:hidden"
-	classes="p-2"
 >
 	{#snippet lead()}
 		{#if breadCrumbs.length > 1}
@@ -27,12 +22,14 @@
 	{/snippet}
 	{#snippet trail()}
 		<div class="hidden space-x-4 sm:flex">
-			<PaperclipIcon size={20} />
-			<CalendarIcon size={20} />
-			<CircleUserIcon size={20} />
+			<Link
+				class="hover:bg-surface-100-900 rounded-container p-1"
+				title={m.btn_title_logout()}
+				href="/.auth/logout"><LogOutIcon size={20} /></Link
+			>
 		</div>
 		<div class="block sm:hidden">
-			<MenuIcon size={20} />
+			<MenuIcon size={24} />
 		</div>
 	{/snippet}
 	{#snippet headline()}

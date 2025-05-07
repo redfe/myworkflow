@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { localizeUrl } from '$lib/paraglide/runtime';
+	import { Link } from '$lib/components/Link';
 	import type { BreadCrumbsProps } from './types';
 
 	const { items }: BreadCrumbsProps = $props();
@@ -10,7 +11,7 @@
 		{#each items as item, i}
 			<li class="flex items-center gap-2">
 				{#if item.href}
-					<a class="opacity-60 hover:underline" href={localizeUrl(item.href).href}>{item.label}</a>
+					<Link href={localizeUrl(item.href).href}>{item.label}</Link>
 				{:else}
 					<span class="opacity-60">{item.label}</span>
 				{/if}

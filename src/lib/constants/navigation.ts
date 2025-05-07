@@ -13,4 +13,7 @@ export const navs = [
 export type NavId = (typeof navs)[number]['id'];
 
 /** アクティブなメニューアイテムに適用するCSSクラス */
-export const activeMenuClasses = 'preset-filled-surface-500';
+export const activeMenuClasses = 'preset-filled-surface-400-600';
+
+/** ホバー時に適用するメニューアイテムのCSSクラス */
+export const hoverMenuClasses = 'hover:preset-filled-surface-100-900';

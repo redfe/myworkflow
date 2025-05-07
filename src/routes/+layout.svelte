@@ -7,6 +7,7 @@
 	import { Header } from '$lib/components/Header';
 	import { SideNavigation } from '$lib/components/SideNavigation';
 	import { navs, type NavId } from '$lib/constants/navigation';
+	import { Link } from '$lib/components/Link';
 
 	let { children } = $props();
 	let isExpanded = $state(true);
@@ -31,14 +32,18 @@
 </script>
 
 <div class="grid h-screen grid-rows-[auto_1fr_auto]">
-	<header class="sticky top-0 z-10 backdrop-blur-sm">
+	<header class="border-surface-100-900 sticky top-0 z-10 border-b-1 backdrop-blur-sm">
 		{@render header()}
 	</header>
 	<div class="grid grid-cols-1 md:grid-cols-[auto_1fr]">
-		<aside>{@render sideNavigation()}</aside>
-		<main class="min-h-150 p-4">{@render main()}</main>
+		<aside class="preset-filled-surface-50-950 border-surface-100-900 border-r-1">
+			{@render sideNavigation()}
+		</aside>
+		<main class="preset-filled-surface-50-950 min-h-150 p-4">{@render main()}</main>
 	</div>
-	<footer class="preset-filled-surface-400-600 p-4 pb-26 opacity-80 md:pb-4">
+	<footer
+		class="preset-filled-surface-50-950 border-surface-100-900 p-4 pb-26 md:border-t-1 md:pb-4"
+	>
 		{@render footer()}
 	</footer>
 </div>
@@ -53,9 +58,13 @@
 
 {#snippet main()}
 	{#if pageTitle || breadCrumbs.length > 0}
-		<div class="mb-4 hidden sm:block">
-			<BreadCrumbs items={breadCrumbs} />
-			<span class="h1">{pageTitle}</span>
+		<div class="sm:block">
+			{#if breadCrumbs.length > 0}
+				<BreadCrumbs items={breadCrumbs} />
+			{/if}
+			{#if pageTitle}
+				<span class="h1 hidden md:block">{pageTitle}</span>
+			{/if}
 		</div>
 	{/if}
 	{@render children()}
@@ -64,12 +73,8 @@
 {#snippet footer()}
 	<div class="mx-auto w-full max-w-screen-xl">
 		<span class="block text-sm md:text-center">
-			© 2025 <a
-				href="https://github.com/redfe"
-				class="hover:underline"
-				target="_blank"
-				rel="noopener">RedFe</a
-			>. All Rights Reserved.
+			© 2025 <Link href="https://github.com/redfe" target="_blank" rel="noopener">RedFe</Link>. All
+			Rights Reserved.
 		</span>
 	</div>
 {/snippet}

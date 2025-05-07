@@ -2,7 +2,7 @@
 	import { Navigation } from '@skeletonlabs/skeleton-svelte';
 	import { ChevronsLeftIcon, ChevronsRightIcon, SettingsIcon } from '@lucide/svelte';
 	import { m } from '$lib/paraglide/messages';
-	import { navs, activeMenuClasses } from '$lib/constants/navigation';
+	import { navs, activeMenuClasses, hoverMenuClasses } from '$lib/constants/navigation';
 	import type { SideNavigationProps } from './types';
 
 	let { isExpanded, navId, onNavValueChange }: SideNavigationProps = $props();
@@ -17,6 +17,7 @@
 <!-- Left Sidebar. -->
 <Navigation.Rail
 	expanded={isExpanded}
+	background="preset-filled-surface-50-950 opacity-80"
 	classes="hidden md:flex"
 	tilesClasses="mt-16"
 	tilesJustify="start"
@@ -25,8 +26,10 @@
 >
 	{#snippet header()}
 		{@const Icon = isExpanded ? ChevronsLeftIcon : ChevronsRightIcon}
-		<Navigation.Tile onclick={toggleExpanded} title={m.toggle_menu_title()}
-			><Icon /></Navigation.Tile
+		<Navigation.Tile
+			onclick={toggleExpanded}
+			title={m.btn_title_toggle_menu()}
+			hover={hoverMenuClasses}><Icon /></Navigation.Tile
 		>
 	{/snippet}
 	{#snippet tiles()}
@@ -37,6 +40,7 @@
 		<Navigation.Tile
 			selected={navId === 'setting'}
 			{active}
+			hover={hoverMenuClasses}
 			title={m.page_title_setting()}
 			labelExpanded={m.page_title_setting()}
 			href="/setting"><SettingsIcon /></Navigation.Tile
@@ -44,9 +48,11 @@
 	{/snippet}
 </Navigation.Rail>
 <!-- Bottom Bar. -->
-<nav class="fixed bottom-0 z-10 flex w-full backdrop-blur-sm md:hidden">
+<nav
+	class="border-surface-100-900 fixed bottom-0 z-10 flex w-full border-t-1 backdrop-blur-sm md:hidden"
+>
 	<Navigation.Bar
-		background="preset-filled-surface-100-900 opacity-80"
+		background="preset-filled-surface-50-950 opacity-80"
 		value={navId}
 		onValueChange={onNavValueChange}
 	>
@@ -61,6 +67,7 @@
 			labelExpanded={label}
 			title={label}
 			label={isUseLabel ? label : undefined}
+			hover={hoverMenuClasses}
 			{id}
 			{active}
 			{href}><Icon /></Navigation.Tile
