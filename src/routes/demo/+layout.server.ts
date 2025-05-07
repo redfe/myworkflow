@@ -1,9 +1,8 @@
+import { m } from '$lib/paraglide/messages';
+
 export function load() {
 	return {
-		title: 'デモ',
-		breadCrumbs: [
-			{ label: 'ホーム', href: '/' },
-			{ label: 'デモ', href: '/demo' }
-		]
+		title: m.page_title_demo(),
+		breadCrumbs: [{ label: m.page_title_home(), href: '/' }]
 	};
 }

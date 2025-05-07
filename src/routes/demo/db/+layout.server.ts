@@ -2,11 +2,10 @@ import { m } from '$lib/paraglide/messages';
 
 export function load() {
 	return {
-		title: m.title_db(),
+		title: m.page_title_db(),
 		breadCrumbs: [
-			{ label: 'ホーム', href: '/' },
-			{ label: 'デモ', href: '/demo' },
-			{ label: 'データベース', href: '/demo/db' }
+			{ label: m.page_title_home(), href: '/' },
+			{ label: m.page_title_demo(), href: '/demo' }
 		]
 	};
 }

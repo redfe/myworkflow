@@ -1,5 +1,1 @@
-{
-	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "こんにちは {name} さん!",
-	"title_db": "データベース"
-}
+{"$schema":"https://inlang.com/schema/inlang-message-format","hello_world":"こんにちは {name} さん!","app_name":"アプリ名","home_message":"これはホームページです。","page_title_db":"データベース","page_title_i18n":"国際化","page_title_home":"ホーム","page_title_demo":"デモ"}

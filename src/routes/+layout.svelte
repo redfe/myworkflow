@@ -12,10 +12,11 @@
 	import { SmileIcon } from '@lucide/svelte';
 	import { localizeUrl } from '$lib/paraglide/runtime';
 	import { BreadCrumbs } from '$lib/components/BreadCrumbs';
+	import { m } from '$lib/paraglide/messages';
 
 	const navValueMap = [
-		{ id: 'home', label: 'Home', path: '/', icon: HomeIcon },
-		{ id: 'demo', label: 'デモ', path: '/demo', icon: SmileIcon }
+		{ id: 'home', label: m.page_title_home(), path: '/', icon: HomeIcon },
+		{ id: 'demo', label: m.page_title_demo(), path: '/demo', icon: SmileIcon }
 	];
 	const sortedNavValueMap = [...navValueMap].sort((a, b) => b.path.length - a.path.length);
 
@@ -54,13 +55,17 @@
 <div class="grid h-screen grid-rows-[auto_1fr_auto]">
 	<!-- Header -->
 	<header class="sticky top-0 z-10 backdrop-blur-sm">
-		<AppBar background="preset-filled-surface-400-600 opacity-80">
+		<AppBar
+			background="preset-filled-surface-400-600 opacity-80 sm:space-y-0"
+			headlineClasses="sm:hidden"
+			classes="p-2"
+		>
 			{#snippet lead()}
 				{#if breadCrumbs.length > 1}
 					<button
 						type="button"
 						class="sm:hidden"
-						onclick={() => goto(breadCrumbs[breadCrumbs.length - 2].href)}
+						onclick={() => goto(breadCrumbs[breadCrumbs.length - 1].href)}
 					>
 						<ArrowLeft size={24} class="sm:hidden" />
 					</button>
@@ -76,7 +81,10 @@
 					<Menu size={20} />
 				</div>
 			{/snippet}
-			<span>{pageTitle ?? 'タイトル'}</span>
+			{#snippet headline()}
+				<span class="h2">{pageTitle}</span>
+			{/snippet}
+			<span>{m.app_name()}</span>
 		</AppBar>
 	</header>
 	<div class="grid grid-cols-1 md:grid-cols-[auto_1fr]">
@@ -105,7 +113,10 @@
 
 		<!-- Main -->
 		<main class="min-h-150 p-4">
-			<BreadCrumbs items={breadCrumbs} />
+			<div class="mb-4 hidden sm:block">
+				<BreadCrumbs items={breadCrumbs} />
+				<span class="h1">{pageTitle}</span>
+			</div>
 			{@render children()}
 		</main>
 	</div>

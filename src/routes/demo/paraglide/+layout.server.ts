@@ -1,10 +1,11 @@
+import { m } from '$lib/paraglide/messages';
+
 export function load() {
 	return {
-		title: '国際化',
+		title: m.page_title_i18n(),
 		breadCrumbs: [
-			{ label: 'ホーム', href: '/' },
-			{ label: 'デモ', href: '/demo' },
-			{ label: '国際化', href: '/demo/paraglide' }
+			{ label: m.page_title_home(), href: '/' },
+			{ label: m.page_title_demo(), href: '/demo' }
 		]
 	};
 }
