@@ -7,5 +7,7 @@
 	"page_title_home": "Home",
 	"home_message": "This is the home page.",
 	"page_title_demo": "Demo",
-	"page_title_other": "Other"
+	"page_title_other": "Other",
+	"page_title_setting": "Settings",
+	"toggle_menu_title": "Toggle Menu Width"
 }
