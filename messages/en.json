@@ -1,4 +1,10 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from en!"
+	"hello_world": "Hello, {name} from en!",
+	"app_name": "App Name",
+	"page_title_db": "Database",
+	"page_title_i18n": "Internationalization",
+	"page_title_home": "Home",
+	"home_message": "This is the home page.",
+	"page_title_demo": "Demo"
 }
