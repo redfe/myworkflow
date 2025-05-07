@@ -1,13 +1,13 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "こんにちは {name} さん!",
 	"app_name": "アプリ名",
-	"home_message": "これはホームページです。",
 	"page_title_db": "データベース",
 	"page_title_i18n": "国際化",
 	"page_title_home": "ホーム",
 	"page_title_demo": "デモ",
 	"page_title_other": "その他",
 	"page_title_setting": "設定",
-	"toggle_menu_title": "メニュー幅を切り替える"
+	"toggle_menu_title": "メニュー幅を切り替える",
+	"msg_hello_world": "こんにちは {name} さん!",
+	"msg_home": "これはホームページです。"
 }

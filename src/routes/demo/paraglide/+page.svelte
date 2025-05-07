@@ -3,7 +3,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 </script>
 
-<pre class="pre my-4">{m.hello_world({ name: 'SvelteKit User' })}</pre>
+<pre class="pre my-4">{m.msg_hello_world({ name: 'SvelteKit User' })}</pre>
 <div>
 	<button class="btn preset-filled-primary-500" onclick={() => setLocale('ja')}>ja</button>
 	<button class="btn preset-filled-primary-500" onclick={() => setLocale('en')}>en</button>

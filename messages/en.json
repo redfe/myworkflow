@@ -1,13 +1,13 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from en!",
 	"app_name": "App Name",
 	"page_title_db": "Database",
 	"page_title_i18n": "Internationalization",
 	"page_title_home": "Home",
-	"home_message": "This is the home page.",
 	"page_title_demo": "Demo",
 	"page_title_other": "Other",
 	"page_title_setting": "Settings",
-	"toggle_menu_title": "Toggle Menu Width"
+	"toggle_menu_title": "Toggle Menu Width",
+	"msg_hello_world": "Hello, {name} from en!",
+	"msg_home": "This is the home page."
 }
