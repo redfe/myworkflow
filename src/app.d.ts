@@ -28,7 +28,7 @@ declare global {
 				/** リンクのテキスト */
 				label: string;
 				/** リンク先のパス */
-				href: string;
+				href?: string;
 			}>;
 		}
 

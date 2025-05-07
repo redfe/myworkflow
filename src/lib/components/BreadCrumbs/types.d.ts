@@ -5,7 +5,7 @@ export interface BreadCrumbItem {
 	/** アイテムに表示されるテキスト */
 	label: string;
 	/** アイテムのリンク先URL */
-	href: string;
+	href?: string;
 }
 
 /**

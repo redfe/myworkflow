@@ -8,6 +8,6 @@ import { m } from '$lib/paraglide/messages';
 export const load: LayoutServerLoad = () => {
 	return {
 		title: m.page_title_demo(),
-		breadCrumbs: [{ label: m.page_title_home(), href: '/' }]
+		breadCrumbs: []
 	};
 };

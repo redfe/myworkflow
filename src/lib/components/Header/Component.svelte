@@ -19,8 +19,8 @@
 	classes="p-2"
 >
 	{#snippet lead()}
-		{#if breadCrumbs.length > 0}
-			<a class="sm:hidden" href={breadCrumbs[breadCrumbs.length - 1].href}>
+		{#if breadCrumbs.length > 1}
+			<a class="sm:hidden" href={breadCrumbs[breadCrumbs.length - 2].href}>
 				<ArrowLeftIcon size={24} class="sm:hidden" />
 			</a>
 		{/if}
