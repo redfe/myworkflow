@@ -6,5 +6,6 @@
 	"page_title_i18n": "Internationalization",
 	"page_title_home": "Home",
 	"home_message": "This is the home page.",
-	"page_title_demo": "Demo"
+	"page_title_demo": "Demo",
+	"page_title_other": "Other"
 }

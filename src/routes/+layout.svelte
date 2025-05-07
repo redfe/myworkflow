@@ -9,14 +9,15 @@
 	import '../app.css';
 	import { page } from '$app/state';
 	import { goto } from '$app/navigation';
-	import { SmileIcon } from '@lucide/svelte';
+	import { BoxIcon, SmileIcon } from '@lucide/svelte';
 	import { localizeUrl } from '$lib/paraglide/runtime';
 	import { BreadCrumbs } from '$lib/components/BreadCrumbs';
 	import { m } from '$lib/paraglide/messages';
 
 	const navValueMap = [
 		{ id: 'home', label: m.page_title_home(), path: '/', icon: HomeIcon },
-		{ id: 'demo', label: m.page_title_demo(), path: '/demo', icon: SmileIcon }
+		{ id: 'demo', label: m.page_title_demo(), path: '/demo', icon: SmileIcon },
+		{ id: 'other', label: m.page_title_other(), path: '/other', icon: BoxIcon }
 	];
 	const sortedNavValueMap = [...navValueMap].sort((a, b) => b.path.length - a.path.length);
 
@@ -61,7 +62,7 @@
 			classes="p-2"
 		>
 			{#snippet lead()}
-				{#if breadCrumbs.length > 1}
+				{#if breadCrumbs.length > 0}
 					<button
 						type="button"
 						class="sm:hidden"
@@ -99,7 +100,6 @@
 				{@render navTiles()}
 			{/snippet}
 		</Navigation.Rail>
-
 		<!-- Bottom Bar. -->
 		<nav class="fixed bottom-0 z-10 flex w-full backdrop-blur-sm md:hidden">
 			<Navigation.Bar
@@ -110,13 +110,14 @@
 				{@render navTiles()}
 			</Navigation.Bar>
 		</nav>
-
 		<!-- Main -->
 		<main class="min-h-150 p-4">
-			<div class="mb-4 hidden sm:block">
-				<BreadCrumbs items={breadCrumbs} />
-				<span class="h1">{pageTitle}</span>
-			</div>
+			{#if pageTitle || breadCrumbs.length > 0}
+				<div class="mb-4 hidden sm:block">
+					<BreadCrumbs items={breadCrumbs} />
+					<span class="h1">{pageTitle}</span>
+				</div>
+			{/if}
 			{@render children()}
 		</main>
 	</div>
