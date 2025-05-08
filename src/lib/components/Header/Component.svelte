@@ -4,6 +4,8 @@
 	import { m } from '$lib/paraglide/messages';
 	import type { HeaderProps } from './types';
 	import { Link } from '$lib/components/Link';
+	import { localizeHref } from '$lib/paraglide/runtime';
+	import { goto } from '$app/navigation';
 
 	const { breadCrumbs }: HeaderProps = $props();
 
@@ -27,7 +29,8 @@
 			<Link
 				class="hover:bg-surface-100-900 rounded-container p-1"
 				title={m.btn_title_logout()}
-				href="/.auth/logout"><LogOutIcon size={20} /></Link
+				onclick={() => goto('/.auth/logout')}
+				href="#"><LogOutIcon size={20} /></Link
 			>
 		</div>
 		<div class="block sm:hidden">
@@ -75,13 +78,12 @@
 					title={m.page_title_setting()}
 					labelExpanded={m.page_title_setting()}
 					onclick={() => elemModal?.close()}
-					href="/setting"><SettingsIcon /></Navigation.Tile
+					href={localizeHref('/setting')}><SettingsIcon /></Navigation.Tile
 				>
 				<Navigation.Tile
 					title={m.btn_title_logout()}
 					labelExpanded={m.btn_title_logout()}
-					onclick={() => elemModal?.close()}
-					href="/.auth/logout"><LogOutIcon /></Navigation.Tile
+					onclick={() => goto('/.auth/logout')}><LogOutIcon /></Navigation.Tile
 				>
 			{/snippet}
 		</Navigation.Rail>
