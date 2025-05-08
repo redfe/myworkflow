@@ -10,5 +10,7 @@
 	"msg_hello_world": "こんにちは {name} さん!",
 	"msg_home": "これはホームページです。",
 	"btn_title_toggle_menu": "メニュー幅を切り替える",
-	"btn_title_logout": "ログアウト"
+	"btn_title_logout": "ログアウト",
+	"btn_title_menu": "メニュー",
+	"btn_title_close": "閉じる"
 }

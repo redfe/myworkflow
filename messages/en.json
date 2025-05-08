@@ -10,5 +10,7 @@
 	"msg_hello_world": "Hello, {name} from en!",
 	"msg_home": "This is the home page.",
 	"btn_title_toggle_menu": "Toggle Menu Width",
-	"btn_title_logout": "Logout"
+	"btn_title_logout": "Logout",
+	"btn_title_menu": "Menu",
+	"btn_title_close": "Close"
 }

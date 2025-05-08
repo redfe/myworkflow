@@ -8,6 +8,7 @@
 	import { SideNavigation } from '$lib/components/SideNavigation';
 	import { navs, type NavId } from '$lib/constants/navigation';
 	import { Link } from '$lib/components/Link';
+	import { BottomNavigation } from '$lib/components/BottomNavigation';
 
 	let { children } = $props();
 	let isExpanded = $state(true);
@@ -35,17 +36,18 @@
 	<header class="border-surface-100-900 sticky top-0 z-10 border-b-1 backdrop-blur-sm">
 		{@render header()}
 	</header>
-	<div class="grid grid-cols-1 md:grid-cols-[auto_1fr]">
-		<aside class="preset-filled-surface-50-950 border-surface-100-900 border-r-1">
+	<div class="grid grid-cols-1 sm:grid-cols-[auto_1fr]">
+		<aside class="preset-filled-surface-50-950 border-surface-100-900 hidden border-r-1 sm:block">
 			{@render sideNavigation()}
 		</aside>
 		<main class="preset-filled-surface-50-950 min-h-150 p-4">{@render main()}</main>
 	</div>
-	<footer
-		class="preset-filled-surface-50-950 border-surface-100-900 p-4 pb-26 md:border-t-1 md:pb-4"
-	>
+	<footer class="preset-filled-surface-50-950 border-surface-100-900 p-4 sm:border-t-1 sm:pb-4">
 		{@render footer()}
 	</footer>
+	<div class="block sm:hidden">
+		<BottomNavigation {navId} {onNavValueChange} />
+	</div>
 </div>
 
 {#snippet header()}
@@ -63,7 +65,7 @@
 				<BreadCrumbs items={breadCrumbs} />
 			{/if}
 			{#if pageTitle}
-				<span class="h1 mb-6 hidden md:block">{pageTitle}</span>
+				<p class="h1 mb-6">{pageTitle}</p>
 			{/if}
 		</div>
 	{/if}
