@@ -63,7 +63,7 @@
 				<BreadCrumbs items={breadCrumbs} />
 			{/if}
 			{#if pageTitle}
-				<span class="h1 hidden md:block">{pageTitle}</span>
+				<span class="h1 mb-6 hidden md:block">{pageTitle}</span>
 			{/if}
 		</div>
 	{/if}
