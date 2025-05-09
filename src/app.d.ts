@@ -10,7 +10,12 @@ declare global {
 		/**
 		 * サーバーサイドのローカル情報を表すインターフェース
 		 */
-		// interface Locals {}
+		interface Locals {
+			/**
+			 * ユーザーのID
+			 */
+			userId?: string;
+		}
 
 		/**
 		 * ページデータを表すインターフェース
