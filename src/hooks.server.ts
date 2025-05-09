@@ -6,7 +6,7 @@ import { dev } from '$app/environment';
 const handleAuthentication: Handle = async ({ event, resolve }) => {
 	const authHeader = event.request.headers.get('X-MS-CLIENT-PRINCIPAL-NAME');
 	if (authHeader) {
-		event.locals.userId = authHeader;
+		event.locals.userId = decodeURIComponent(authHeader);
 	} else {
 		if (dev) {
 			event.locals.userId = 'devUserId';
