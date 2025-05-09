@@ -5,9 +5,10 @@ import { m } from '$lib/paraglide/messages';
  * ルートレイアウトのサーバーサイドロード関数
  * ページのタイトルとパンくずリストの初期値を設定します
  */
-export const load: LayoutServerLoad = () => {
+export const load: LayoutServerLoad = (event) => {
 	return {
 		title: m.page_title_home(),
-		breadCrumbs: []
+		breadCrumbs: [],
+		userId: event.locals.userId
 	};
 };
