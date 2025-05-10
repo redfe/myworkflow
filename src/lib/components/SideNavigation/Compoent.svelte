@@ -6,7 +6,7 @@
 	import type { SideNavigationProps } from './types';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
-	let { isExpanded, navId, onNavValueChange }: SideNavigationProps = $props();
+	let { isExpanded = $bindable(), navId, onNavValueChange }: SideNavigationProps = $props();
 
 	const tilesNavValueMap = [...navs.filter((item) => item.id !== 'setting')];
 
@@ -18,9 +18,10 @@
 <!-- Left Sidebar. -->
 <Navigation.Rail
 	expanded={isExpanded}
-	background="preset-filled-surface-50-950 opacity-80"
+	background="preset-filled-surface-50-950"
 	classes="hidden sm:flex"
-	tilesClasses="mt-16"
+	headerFlexDirection="row"
+	headerJustify="justify-end"
 	tilesJustify="start"
 	value={navId}
 	onValueChange={onNavValueChange}
@@ -28,6 +29,7 @@
 	{#snippet header()}
 		{@const Icon = isExpanded ? ChevronsLeftIcon : ChevronsRightIcon}
 		<Navigation.Tile
+			width="w-12"
 			onclick={toggleExpanded}
 			title={m.btn_title_toggle_menu()}
 			hover={hoverMenuClasses}><Icon /></Navigation.Tile

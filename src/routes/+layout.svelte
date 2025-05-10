@@ -33,18 +33,25 @@
 </script>
 
 <div class="grid h-screen grid-rows-[auto_1fr_auto]">
-	<header class="border-surface-100-900 sticky top-0 z-10 border-b-1 backdrop-blur-sm">
+	<header class="border-surface-100-900 fixed top-0 z-10 w-full border-b-1 backdrop-blur-sm">
 		{@render header()}
 	</header>
-	<div class="grid grid-cols-1 sm:grid-cols-[auto_1fr]">
-		<aside class="preset-filled-surface-50-950 border-surface-100-900 hidden border-r-1 sm:block">
+	<div class="flex">
+		<aside
+			class="preset-filled-surface-50-950 border-surface-100-900 fixed top-15 hidden min-h-50 overflow-scroll border-r-1 sm:block"
+			style="height: calc(100lvh - 60px)"
+		>
 			{@render sideNavigation()}
 		</aside>
-		<main class="preset-filled-surface-50-950 min-h-150 p-4">{@render main()}</main>
+		<div class={'w-full ' + (isExpanded ? 'sm:ml-64' : 'sm:ml-24')}>
+			<main class="preset-filled-surface-50-950 mt-15 min-h-150 p-4">
+				{@render main()}
+			</main>
+			<footer class="preset-filled-surface-50-950 border-surface-100-900 w-full p-4 sm:pb-4">
+				{@render footer()}
+			</footer>
+		</div>
 	</div>
-	<footer class="preset-filled-surface-50-950 border-surface-100-900 p-4 sm:border-t-1 sm:pb-4">
-		{@render footer()}
-	</footer>
 	<div class="block sm:hidden">
 		<BottomNavigation {navId} {onNavValueChange} />
 	</div>
@@ -55,7 +62,7 @@
 {/snippet}
 
 {#snippet sideNavigation()}
-	<SideNavigation {isExpanded} {navId} {onNavValueChange} />
+	<SideNavigation bind:isExpanded {navId} {onNavValueChange} />
 {/snippet}
 
 {#snippet main()}
