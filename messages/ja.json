@@ -13,5 +13,11 @@
 	"btn_title_logout": "ログアウト",
 	"btn_title_menu": "メニュー",
 	"btn_title_close": "閉じる",
-	"page_title_works": "作業一覧"
+	"page_title_works": "作業一覧",
+	"btn_title_move_up": "上に移動",
+	"btn_title_move_down": "下に移動",
+	"btn_title_edit": "編集",
+	"work_input_name": "入力",
+	"work_output_name": "出力",
+	"work_name": "作業"
 }

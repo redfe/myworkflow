@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { m } from '$lib/paraglide/messages';
 	import { ChevronDownIcon, ChevronUpIcon, ComponentIcon, EditIcon, Icon } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 
@@ -16,14 +17,14 @@
 {#snippet work()}
 	<div class="card preset-outlined-surface-300-700 flex flex-col gap-2 overflow-hidden p-2">
 		<div class="flex w-full flex-row justify-start gap-2">
-			{@render headerButton('move up', ChevronUpIcon)}
-			{@render headerButton('move down', ChevronDownIcon)}
-			{@render headerButton('edit', EditIcon)}
+			{@render headerButton(m.btn_title_move_up(), ChevronUpIcon)}
+			{@render headerButton(m.btn_title_move_down(), ChevronDownIcon)}
+			{@render headerButton(m.btn_title_edit(), EditIcon)}
 		</div>
 		<table>
 			<tbody>
 				<tr>
-					{@render th('入力')}
+					{@render th(m.work_input_name())}
 					<td>
 						山田さん<span class="text-surface-500 text-xs"
 							>&nbsp;/&nbsp見積り依頼（あああああああ概要情報含む）</span
@@ -31,11 +32,11 @@
 					</td>
 				</tr>
 				<tr>
-					{@render th('作業')}
+					{@render th(m.work_name())}
 					<td>見積り作業</td>
 				</tr>
 				<tr>
-					{@render th('出力')}
+					{@render th(m.work_output_name())}
 					<td
 						>山田さん
 						<span class="text-surface-500 text-xs">&nbsp;/&nbsp見積り書</span></td
