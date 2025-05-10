@@ -5,13 +5,13 @@
 	import { localizeUrl } from '$lib/paraglide/runtime';
 	import { BreadCrumbs } from '$lib/components/BreadCrumbs';
 	import { Header } from '$lib/components/Header';
-	import { SideNavigation } from '$lib/components/SideNavigation';
+	import { getExpanded, SideNavigation } from '$lib/components/SideNavigation';
 	import { navs, type NavId } from '$lib/constants/navigation';
 	import { Link } from '$lib/components/Link';
 	import { BottomNavigation } from '$lib/components/BottomNavigation';
 
 	let { children } = $props();
-	let isExpanded = $state(true);
+	let isExpanded = $state(getExpanded() ?? true);
 	let navId: NavId | undefined = $derived(getNavId(page.route.id));
 	let breadCrumbs = $derived(page.data.breadCrumbs);
 	let pageTitle = $derived(page.data.title);

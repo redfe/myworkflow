@@ -5,6 +5,7 @@
 	import { navs, activeMenuClasses, hoverMenuClasses } from '$lib/constants/navigation';
 	import type { SideNavigationProps } from './types';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import { setExpanded } from './expand';
 
 	let { isExpanded = $bindable(), navId, onNavValueChange }: SideNavigationProps = $props();
 
@@ -12,6 +13,7 @@
 
 	function toggleExpanded() {
 		isExpanded = !isExpanded;
+		setExpanded(isExpanded);
 	}
 </script>
 
