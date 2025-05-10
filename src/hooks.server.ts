@@ -4,7 +4,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { dev } from '$app/environment';
 
 const handleAuthentication: Handle = async ({ event, resolve }) => {
-	const authHeader = event.request.headers.get('X-MS-CLIENT-PRINCIPAL-NAME');
+	const authHeader = event.request.headers.get('X-MS-CLIENT-PRINCIPAL-ID');
 	if (authHeader) {
 		event.locals.userId = decodeURIComponent(authHeader);
 	} else {
