@@ -38,13 +38,16 @@
 	</header>
 	<div class="flex">
 		<aside
-			class="preset-filled-surface-50-950 border-surface-100-900 fixed top-15 hidden min-h-50 overflow-scroll border-r-1 sm:block"
-			style="height: calc(100lvh - 60px)"
+			class="preset-filled-surface-50-950 border-surface-100-900 fixed top-14 hidden min-h-50 overflow-scroll border-r-1 sm:block"
+			style="height: calc(100lvh - 56px)"
 		>
 			{@render sideNavigation()}
 		</aside>
 		<div class={'w-full ' + (isExpanded ? 'sm:ml-64' : 'sm:ml-24')}>
-			<main class="preset-filled-surface-50-950 mt-15 min-h-150 p-4">
+			<main
+				class="preset-filled-surface-50-950 mt-15 min-h-150 p-4"
+				style:min-height="calc(100lvh - 58px - 58px)"
+			>
 				{@render main()}
 			</main>
 			<footer class="preset-filled-surface-50-950 border-surface-100-900 w-full p-4 sm:pb-4">
