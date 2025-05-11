@@ -9,17 +9,18 @@
 	const tilesNavValueMap = [...navs.filter((item) => item.id !== 'setting')];
 </script>
 
-<div class="pb-20 md:hidden"></div>
+<div class="pb-14 md:hidden"></div>
 <nav
 	id="bottom-navigation"
 	class="border-surface-100-900 fixed bottom-0 z-10 flex w-full border-t-1 backdrop-blur-sm md:hidden"
 >
 	<Navigation.Bar
+		height="h-12"
 		background="preset-filled-surface-50-950 opacity-80"
 		value={navId}
 		onValueChange={onNavValueChange}
 	>
-		{@render navTiles(true)}
+		{@render navTiles()}
 	</Navigation.Bar>
 </nav>
 
@@ -33,7 +34,7 @@
 			hover={hoverMenuClasses}
 			{id}
 			{active}
-			href={localizeHref(href)}><Icon /></Navigation.Tile
+			href={localizeHref(href)}><Icon size={20} /></Navigation.Tile
 		>
 	{/each}
 {/snippet}
