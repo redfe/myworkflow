@@ -40,17 +40,15 @@ You can preview the production build with `npm run preview`.
 ## Deploy to Azure Container App Registry
 
 ```bash
-source .env
 az login
-az acr login --name ${AZ_CR}
-az acr build --registry ${AZ_CR} --image ${AZ_IMG} .
+source .env && az acr login --name ${AZ_CR}
+source .env && az acr build --registry ${AZ_CR} --image ${AZ_IMG} .
 ```
 
 ## Update Azure Container Apps
 
 ```bash
-source .env
-az containerapp update --name ${AZ_CA} --resource-group ${AZ_RG} --image ${AZ_CR}.azurecr.io/${AZ_IMG}:latest --revision-suffix $(date +%Y%m%d%H%M%S)
+source .env && az containerapp update --name ${AZ_CA} --resource-group ${AZ_RG} --image ${AZ_CR}.azurecr.io/${AZ_IMG}:latest --revision-suffix $(date +%Y%m%d%H%M%S)
 ```
 
 ## ex.Create Docker image & Run Docker container
