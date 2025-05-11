@@ -19,5 +19,13 @@
 	"btn_title_edit": "編集",
 	"work_input_name": "入力",
 	"work_output_name": "出力",
-	"work_name": "作業"
+	"work_name": "作業",
+	"page_title_add_work": "作業追加",
+	"work_input_element": "入力対象",
+	"work_input_information": "入力情報",
+	"work_output_element": "出力対象",
+	"work_output_information": "出力情報",
+	"btn_title_add": "追加",
+	"btn_title_cancel": "キャンセル",
+	"btn_title_register": "登録"
 }

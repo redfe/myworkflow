@@ -1,10 +1,15 @@
 <script lang="ts">
+	import { Link } from '$lib/components/Link';
 	import { m } from '$lib/paraglide/messages';
 	import { ChevronDownIcon, ChevronUpIcon, ComponentIcon, EditIcon, Icon } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 
 	const list = new Array(10).fill(undefined);
 </script>
+
+<div class="mb-4">
+	<Link class="btn preset-filled-primary-500" href="/works/add">{m.btn_title_add()}</Link>
+</div>
 
 <ul class="flex flex-col items-center gap-4">
 	{#each list}

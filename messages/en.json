@@ -19,5 +19,13 @@
 	"page_title_works": "Works",
 	"work_input_name": "Input",
 	"work_output_name": "Output",
-	"work_name": "Work"
+	"work_name": "Work",
+	"page_title_add_work": "Add Work",
+	"work_input_element": "Input Element",
+	"work_input_information": "Input Information",
+	"work_output_element": "Output Element",
+	"work_output_information": "Output Information",
+	"btn_title_add": "Add",
+	"btn_title_cancel": "Cancel",
+	"btn_title_register": "Register"
 }
