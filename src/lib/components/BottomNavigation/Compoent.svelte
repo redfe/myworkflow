@@ -15,7 +15,7 @@
 	class="border-surface-100-900 fixed bottom-0 z-10 flex w-full border-t-1 backdrop-blur-sm md:hidden"
 >
 	<Navigation.Bar
-		height="h-12"
+		height="h-16 pb-4"
 		background="preset-filled-surface-50-950 opacity-80"
 		value={navId}
 		onValueChange={onNavValueChange}
