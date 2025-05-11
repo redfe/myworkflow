@@ -1,13 +1,15 @@
 <script lang="ts">
 	import { Link } from '$lib/components/Link';
 	import { m } from '$lib/paraglide/messages';
-	import { ChevronDownIcon, ChevronUpIcon, ComponentIcon, EditIcon, Icon } from '@lucide/svelte';
-	import type { Component } from 'svelte';
-
-	const list = new Array(10).fill(undefined);
+	import { enhance } from '$app/forms';
 </script>
 
-<form class="space-y-4-w-100 flex w-full max-w-md flex-col gap-4" action="?/register" method="POST">
+<form
+	class="space-y-4-w-100 flex w-full max-w-md flex-col gap-4"
+	action="?/register"
+	method="POST"
+	use:enhance
+>
 	<label class="label">
 		<span class="label-text">{m.work_input_element()}</span>
 		<select class="select" name="inputElement">
