@@ -20,20 +20,14 @@
 		<span class="label-text">{m.work_input_element()}</span>
 		<select
 			class="select"
-			class:preset-tonal-error={$errors.inputElement != null}
-			name="inputElement"
-			bind:value={$form.inputElement}
-			{...$constraints.inputElement}
+			name="inputElementId"
+			bind:value={$form.inputElementId}
+			{...$constraints.inputElementId}
 		>
-			<option value=""></option>
-			<option value="1">Option 1</option>
-			<option value="2">Option 2</option>
-			<option value="3">Option 3</option>
-			<option value="4">Option 4</option>
-			<option value="5">Option 5</option>
+			{@render workElementOptions()}
 		</select>
-		<p class="text-error-500 text-sm" class:hidden={$errors.inputElement == null}>
-			{$errors.inputElement}
+		<p class="text-error-500 text-sm" class:hidden={$errors.inputElementId == null}>
+			{$errors.inputElementId}
 		</p>
 	</label>
 	<label class="label">
@@ -54,29 +48,26 @@
 		<input
 			type="text"
 			class="input"
-			name="workName"
-			bind:value={$form.workName}
-			{...$constraints.outputElement}
+			name="workDescription"
+			bind:value={$form.workDescription}
+			{...$constraints.outputElementId}
 		/>
-		<p class="text-error-500 text-sm" class:hidden={$errors.workName == null}>{$errors.workName}</p>
+		<p class="text-error-500 text-sm" class:hidden={$errors.workDescription == null}>
+			{$errors.workDescription}
+		</p>
 	</label>
 	<label class="label">
 		<span class="label-text">{m.work_output_element()}</span>
 		<select
 			class="select"
-			name="outputElement"
-			bind:value={$form.outputElement}
-			{...$constraints.outputElement}
+			name="outputElementId"
+			bind:value={$form.outputElementId}
+			{...$constraints.outputElementId}
 		>
-			<option value=""></option>
-			<option value="1">Option 1</option>
-			<option value="2">Option 2</option>
-			<option value="3">Option 3</option>
-			<option value="4">Option 4</option>
-			<option value="5">Option 5</option>
+			{@render workElementOptions()}
 		</select>
-		<p class="text-error-500 text-sm" class:hidden={$errors.outputElement == null}>
-			{$errors.outputElement}
+		<p class="text-error-500 text-sm" class:hidden={$errors.outputElementId == null}>
+			{$errors.outputElementId}
 		</p>
 	</label>
 	<label class="label">
@@ -99,3 +90,10 @@
 </form>
 
 <SuperDebug display={dev} data={$form} />
+
+{#snippet workElementOptions()}
+	<option value=""></option>
+	{#each data.workElements as item (item.id)}
+		<option value={item.id}>{item.name}</option>
+	{/each}
+{/snippet}

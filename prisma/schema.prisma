@@ -8,24 +8,24 @@ datasource db {
 }
 
 model UserWork {
-  id                    Int          @id @default(autoincrement())
-  userId                String
-  createdAt             DateTime     @default(now())
-  updatedAt             DateTime     @updatedAt
-  inputWorkElement      WorkElement? @relation("InputWork", fields: [inputWorkElementId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  inputWorkElementId    Int?
-  inputWorkInformation  String?
-  workDescription       String?
-  outputWorkElement     WorkElement? @relation("OutputWork", fields: [outputWorkElementId], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  outputWorkElementId   Int?
-  outputWorkInformation String?
+  id                Int          @id @default(autoincrement())
+  userId            String
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  inputElement      WorkElement? @relation("InputWork", fields: [inputElementId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  inputElementId    Int?
+  inputInformation  String?
+  workDescription   String?
+  outputElement     WorkElement? @relation("OutputWork", fields: [outputElementId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  outputElementId   Int?
+  outputInformation String?
 }
 
 model WorkElement {
-  id              Int        @id @default(autoincrement())
-  createdAt       DateTime   @default(now())
-  updatedAt       DateTime   @updatedAt
-  workElementName String     @unique
-  inputWorks      UserWork[] @relation("InputWork")
-  outputWorks     UserWork[] @relation("OutputWork")
+  id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  name        String     @unique
+  inputWorks  UserWork[] @relation("InputWork")
+  outputWorks UserWork[] @relation("OutputWork")
 }

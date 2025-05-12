@@ -4,8 +4,13 @@ export async function getAllUsers() {
 	const prisma = getPrismaClient();
 	return await prisma.userWork.findMany({
 		include: {
-			inputWorkElement: true,
-			outputWorkElement: true
+			inputElement: true,
+			outputElement: true
 		}
 	});
+}
+
+export async function getAllWorkElement() {
+	const prisma = getPrismaClient();
+	return await prisma.workElement.findMany();
 }
