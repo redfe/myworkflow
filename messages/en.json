@@ -27,5 +27,7 @@
 	"work_output_information": "Output Information",
 	"btn_title_add": "Add",
 	"btn_title_cancel": "Cancel",
-	"btn_title_register": "Register"
+	"btn_title_register": "Register",
+	"error_empty": "{name} should not be empty",
+	"error_not_selected": "{name} should not be not selected"
 }

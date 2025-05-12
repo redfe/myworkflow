@@ -27,5 +27,7 @@
 	"work_output_information": "出力情報",
 	"btn_title_add": "追加",
 	"btn_title_cancel": "キャンセル",
-	"btn_title_register": "登録"
+	"btn_title_register": "登録",
+	"error_empty": "{name}を入力してください",
+	"error_not_selected": "{name}を選択してください"
 }
