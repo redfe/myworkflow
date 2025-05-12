@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { Link } from '$lib/components/Link';
 	import { m } from '$lib/paraglide/messages';
-	import { ChevronDownIcon, ChevronUpIcon, ComponentIcon, EditIcon, Icon } from '@lucide/svelte';
+	import { ChevronDownIcon, ChevronUpIcon, EditIcon } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 
-	const list = new Array(10).fill(undefined);
+	const { data } = $props();
+	const list = data.works;
 </script>
 
 <div class="mb-4">
@@ -12,14 +13,14 @@
 </div>
 
 <ul class="flex flex-col items-center gap-4">
-	{#each list}
+	{#each list as item}
 		<li class="w-full">
-			{@render work()}
+			{@render work(item)}
 		</li>
 	{/each}
 </ul>
 
-{#snippet work()}
+{#snippet work(item: (typeof list)[number])}
 	<div class="card preset-outlined-surface-300-700 flex flex-col gap-2 overflow-hidden p-2">
 		<div class="flex w-full flex-row justify-start gap-2">
 			{@render headerButton(m.btn_title_move_up(), ChevronUpIcon)}
@@ -31,20 +32,20 @@
 				<tr>
 					{@render th(m.work_input_name())}
 					<td>
-						山田さん<span class="text-surface-500 text-xs"
-							>&nbsp;/&nbsp見積り依頼（あああああああ概要情報含む）</span
+						{item.inputElement?.name}<span class="text-surface-500 text-xs"
+							>&nbsp;/&nbsp{item.inputInformation}</span
 						>
 					</td>
 				</tr>
 				<tr>
 					{@render th(m.work_name())}
-					<td>見積り作業</td>
+					<td>{item.workDescription}</td>
 				</tr>
 				<tr>
 					{@render th(m.work_output_name())}
 					<td
-						>山田さん
-						<span class="text-surface-500 text-xs">&nbsp;/&nbsp見積り書</span></td
+						>{item.outputElement?.name}
+						<span class="text-surface-500 text-xs">&nbsp;/&nbsp{item.outputInformation}</span></td
 					>
 				</tr>
 			</tbody>

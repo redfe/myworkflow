@@ -14,3 +14,16 @@ export async function getAllWorkElement() {
 	const prisma = getPrismaClient();
 	return await prisma.workElement.findMany();
 }
+
+export async function getAllWorks(userId: string) {
+	const prisma = getPrismaClient();
+	return await prisma.userWork.findMany({
+		where: {
+			userId
+		},
+		include: {
+			inputElement: true,
+			outputElement: true
+		}
+	});
+}
