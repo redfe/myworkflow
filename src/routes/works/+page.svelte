@@ -5,22 +5,32 @@
 	import type { Component } from 'svelte';
 
 	const { data } = $props();
-	const list = data.works;
+	const worksPromise = data.works;
 </script>
 
 <div class="mb-4">
 	<Link class="btn preset-filled-primary-500" href="/works/add">{m.btn_title_add()}</Link>
 </div>
 
-<ul class="flex flex-col items-center gap-4">
-	{#each list as item}
-		<li class="w-full">
-			{@render work(item)}
-		</li>
-	{/each}
-</ul>
+{#await worksPromise}
+	<div class="space-y-4">
+		<div class="placeholder animate-pulse"></div>
+		<div class="placeholder animate-pulse"></div>
+		<div class="placeholder animate-pulse"></div>
+		<div class="placeholder animate-pulse"></div>
+		<div class="placeholder animate-pulse"></div>
+	</div>
+{:then list}
+	<ul class="flex flex-col items-center gap-4">
+		{#each list as item}
+			<li class="w-full">
+				{@render work(item)}
+			</li>
+		{/each}
+	</ul>
+{/await}
 
-{#snippet work(item: (typeof list)[number])}
+{#snippet work(item: Awaited<typeof worksPromise>[number])}
 	<div class="card preset-outlined-surface-300-700 flex flex-col gap-2 overflow-hidden p-2">
 		<div class="flex w-full flex-row justify-start gap-2">
 			{@render headerButton(m.btn_title_move_up(), ChevronUpIcon)}
