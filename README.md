@@ -37,18 +37,12 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 
-## Deploy to Azure Container App Registry
+## Deploy to Azure Container Apps
 
 ```bash
-az login
-source .env && az acr login --name ${AZ_CR}
-source .env && az acr build --registry ${AZ_CR} --image ${AZ_IMG} .
-```
-
-## Update Azure Container Apps
-
-```bash
-source .env && az containerapp update --name ${AZ_CA} --resource-group ${AZ_RG} --image ${AZ_CR}.azurecr.io/${AZ_IMG}:latest --revision-suffix $(date +%Y%m%d%H%M%S)
+source .env && docker build -t ${DH_REPO}/${D_IMG}:latest .
+source .env && docker push ${DH_REPO}/${D_IMG}:latest
+source .env && az containerapp update --name ${AZ_CA} --resource-group ${AZ_RG} --revision-suffix $(date +%Y%m%d%H%M%S)
 ```
 
 ## ex.Create Docker image & Run Docker container

@@ -1,6 +1,7 @@
 FROM node:23.11-alpine AS builder
 WORKDIR /app
 COPY . .
+RUN rm -f .env
 RUN npm install
 RUN npx prisma generate
 RUN npm run build
