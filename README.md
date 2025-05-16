@@ -37,6 +37,12 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
 
+## Migrate Local Database
+
+```bash
+npx prisma migrate dev
+```
+
 ## Deploy to Azure Container Apps
 
 ```bash
