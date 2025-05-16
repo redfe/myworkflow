@@ -4,4 +4,3 @@
 </script>
 
 <p>{m.msg_home()}</p>
-<p>userId: {page.data.userId}</p>
