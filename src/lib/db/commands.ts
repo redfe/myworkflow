@@ -33,3 +33,15 @@ export async function updateWork(props: UpdateWorkProps) {
 		data: { ...userWork, id: undefined }
 	});
 }
+
+type DeleteWorkProps = Pick<UserWork, 'id' | 'userId'>;
+
+export async function deleteWork(props: DeleteWorkProps) {
+	const prisma = getPrismaClient();
+	await prisma.userWork.delete({
+		where: {
+			id: props.id,
+			userId: props.userId
+		}
+	});
+}
