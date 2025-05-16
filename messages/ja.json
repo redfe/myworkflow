@@ -34,5 +34,6 @@
 	"work_description": "作業",
 	"btn_title_update": "更新",
 	"btn_title_delete": "削除",
-	"msg_confirm_delete": "削除しますか？"
+	"msg_confirm_delete": "削除しますか？",
+	"page_title_workflow": "ワークフロー"
 }

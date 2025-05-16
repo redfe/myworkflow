@@ -34,5 +34,6 @@
 	"work_description": "Work",
 	"btn_title_update": "Update",
 	"btn_title_delete": "Delete",
-	"msg_confirm_delete": "delete?"
+	"msg_confirm_delete": "delete?",
+	"page_title_workflow": "Work flow"
 }

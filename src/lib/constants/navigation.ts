@@ -1,12 +1,13 @@
-import { HomeIcon, SmileIcon, BoxIcon, SettingsIcon, ListIcon } from '@lucide/svelte';
+import { HomeIcon, SettingsIcon, ListIcon, WorkflowIcon } from '@lucide/svelte';
 import { m } from '$lib/paraglide/messages';
 
 /** サイドナビゲーションに表示するアイテムの配列 */
 export const navs = [
 	{ id: 'home', label: m.page_title_home(), href: '/', icon: HomeIcon },
 	{ id: 'works', label: m.page_title_works(), href: '/works', icon: ListIcon },
-	{ id: 'demo', label: m.page_title_demo(), href: '/demo', icon: SmileIcon },
-	{ id: 'other', label: m.page_title_other(), href: '/other', icon: BoxIcon },
+	// { id: 'demo', label: m.page_title_demo(), href: '/demo', icon: SmileIcon },
+	// { id: 'other', label: m.page_title_other(), href: '/other', icon: BoxIcon },
+	{ id: 'workFlow', label: m.page_title_workflow(), href: '/workflow', icon: WorkflowIcon },
 	{ id: 'setting', label: m.page_title_setting(), href: '/setting', icon: SettingsIcon }
 ] as const;
 
