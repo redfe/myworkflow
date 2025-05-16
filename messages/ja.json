@@ -31,5 +31,6 @@
 	"error_empty": "{name}を入力してください",
 	"error_not_selected": "{name}を選択してください",
 	"error_max_length": "{name}は{length}文字以内で入力してください",
-	"work_description": "作業"
+	"work_description": "作業",
+	"btn_title_update": "更新"
 }

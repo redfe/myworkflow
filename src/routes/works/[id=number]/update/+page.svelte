@@ -12,7 +12,7 @@
 
 <form
 	class="space-y-4-w-100 flex w-full max-w-md flex-col gap-4"
-	action="?/register"
+	action="?/update"
 	method="POST"
 	use:enhance
 >
@@ -84,7 +84,7 @@
 		</p>
 	</label>
 	<div class="flex flex-row gap-4">
-		<button type="submit" class="btn preset-filled-primary-500">{m.btn_title_register()}</button>
+		<button type="submit" class="btn preset-filled-primary-500">{m.btn_title_update()}</button>
 		<Link class="btn preset-outlined-surface-500" href="/works">{m.btn_title_cancel()}</Link>
 	</div>
 </form>

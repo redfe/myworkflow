@@ -31,5 +31,6 @@
 	"error_empty": "{name} should not be empty",
 	"error_not_selected": "{name} should not be not selected",
 	"error_max_length": "{name}は{length}文字以内で入力してください",
-	"work_description": "Work"
+	"work_description": "Work",
+	"btn_title_update": "Update"
 }

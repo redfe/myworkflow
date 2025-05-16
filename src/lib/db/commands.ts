@@ -1,15 +1,35 @@
 import { getPrismaClient } from './db';
-import type { AddWorkSchema } from '../../routes/works/add/schema';
+import type { UserWork } from '@prisma/client';
 
-export async function registerWork(userWorkData: AddWorkSchema & { userId: string }) {
+type RegisterWorkProps = Omit<UserWork, 'id' | 'createdAt' | 'updatedAt'>;
+
+export async function registerWork(props: RegisterWorkProps) {
 	const prisma = getPrismaClient();
 	const now = new Date();
 	const userWork = {
-		...userWorkData,
-		inputElementId: Number(userWorkData.inputElementId),
-		outputElementId: Number(userWorkData.outputElementId),
+		...props,
 		createdAt: now,
 		updatedAt: now
 	};
 	await prisma.userWork.create({ data: userWork });
+}
+
+type UpdateWorkProps = Omit<UserWork, 'createdAt' | 'updatedAt'>;
+
+export async function updateWork(props: UpdateWorkProps) {
+	const prisma = getPrismaClient();
+	const now = new Date();
+	const userWork = {
+		...props,
+		inputElementId: Number(props.inputElementId),
+		outputElementId: Number(props.outputElementId),
+		updatedAt: now
+	};
+	await prisma.userWork.update({
+		where: {
+			id: userWork.id,
+			userId: userWork.userId
+		},
+		data: { ...userWork, id: undefined }
+	});
 }

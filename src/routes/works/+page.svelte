@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { Link } from '$lib/components/Link';
 	import { m } from '$lib/paraglide/messages';
+	import { localizeHref, localizeUrl } from '$lib/paraglide/runtime';
 	import { ChevronDownIcon, ChevronUpIcon, EditIcon } from '@lucide/svelte';
 	import type { Component } from 'svelte';
 
 	const { data } = $props();
 	const worksPromise = data.works;
+	const headerButtonClass = 'hover:bg-surface-100-900 rounded-container p-1';
 </script>
 
 <div class="mb-4">
@@ -35,7 +37,7 @@
 		<div class="flex w-full flex-row justify-start gap-2">
 			{@render headerButton(m.btn_title_move_up(), ChevronUpIcon)}
 			{@render headerButton(m.btn_title_move_down(), ChevronDownIcon)}
-			{@render headerButton(m.btn_title_edit(), EditIcon)}
+			{@render editButton(m.btn_title_edit(), item.id, EditIcon)}
 		</div>
 		<table>
 			<tbody>
@@ -64,11 +66,13 @@
 {/snippet}
 
 {#snippet headerButton(title: string, Icon: Component, onclick?: () => void)}
-	<button type="button" {title} {onclick} class="hover:bg-surface-100-900 rounded-container p-1"
-		><Icon /></button
-	>
+	<button type="button" {title} {onclick} class={headerButtonClass}><Icon /></button>
+{/snippet}
+
+{#snippet editButton(title: string, id: number, Icon: Component)}
+	<a href={localizeHref(`/works/${id}/update`)} {title} class={headerButtonClass}><Icon /></a>
 {/snippet}
 
 {#snippet th(text: string)}
-	<th class="max-w-24 p-1 pr-4 font-bold text-nowrap">{text}</th>
+	<th class="w-24 max-w-24 p-1 pr-4 font-bold text-nowrap">{text}</th>
 {/snippet}

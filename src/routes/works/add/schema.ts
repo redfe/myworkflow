@@ -1,5 +1,6 @@
 import { m } from '$lib/paraglide/messages';
 import { IsNotEmpty, IsNumberString, IsString, MaxLength } from 'class-validator';
+
 export class AddWorkSchema {
 	@IsNumberString()
 	@IsNotEmpty({ message: () => m.error_not_selected({ name: m.work_input_element() }) })
@@ -30,5 +31,3 @@ export class AddWorkSchema {
 	})
 	outputInformation: string = '';
 }
-
-export const schema = AddWorkSchema;
