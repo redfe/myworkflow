@@ -83,7 +83,7 @@
 
 			// リセット
 			if (worker) {
-				worker.data('labelAndWork', '');
+				worker.data('labelAndWork', worker.data('label'));
 			}
 			cy!.elements().removeClass('highlighted-group').removeClass('highlighted-node');
 

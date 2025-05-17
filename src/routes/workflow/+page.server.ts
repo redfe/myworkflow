@@ -43,7 +43,8 @@ async function getElements(userId: string) {
 	const nodes: ElementDefinition[] = Array.from(workElementNames as Set<string>).map((name) => ({
 		data: {
 			id: name,
-			label: name
+			label: name,
+			labelAndWork: name // 作業者と作業名を併記するためのプロパティ
 		}
 	}));
 
