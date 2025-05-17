@@ -4,6 +4,10 @@ import type { ElementDefinition } from 'cytoscape';
 
 export const load = async ({ locals }) => {
 	const userId = locals.userId!;
+	return { elements: getElements(userId) };
+};
+
+async function getElements(userId: string) {
 	const works = await getAllWorks(userId);
 
 	const workElementNames = new Set();
@@ -17,7 +21,9 @@ export const load = async ({ locals }) => {
 					id: randomUUID(),
 					source: work.inputElement!.name,
 					target: userId,
-					label: work.inputInformation
+					label: work.inputInformation,
+					workDescription: work.workDescription,
+					workerId: userId
 				}
 			},
 			{
@@ -26,7 +32,9 @@ export const load = async ({ locals }) => {
 					id: randomUUID(),
 					source: userId,
 					target: work.outputElement!.name,
-					label: work.outputInformation
+					label: work.outputInformation,
+					workDescription: work.workDescription,
+					workerId: userId
 				}
 			}
 		];
@@ -45,5 +53,5 @@ export const load = async ({ locals }) => {
 		...edges
 	];
 
-	return { elements };
-};
+	return elements;
+}
