@@ -1,13 +1,12 @@
 <script lang="ts">
 	import { Link } from '$lib/components/Link';
 	import { m } from '$lib/paraglide/messages';
-	import { enhance } from '$app/forms';
 	import SuperDebug, { superForm } from 'sveltekit-superforms';
 	import { dev } from '$app/environment';
+	import { SubmitButton } from '$lib/components/SubmitButton';
 
 	let { data } = $props();
-
-	const { form, errors, constraints } = superForm(data.form);
+	let { form, errors, constraints, submitting, enhance } = superForm(data.form);
 </script>
 
 <form
@@ -84,8 +83,8 @@
 		</p>
 	</label>
 	<div class="flex flex-row gap-4">
-		<button type="submit" class="btn preset-filled-primary-500">{m.btn_title_register()}</button>
-		<Link class="btn preset-outlined-surface-500" href="/works">{m.btn_title_cancel()}</Link>
+		<SubmitButton submitting={$submitting}>{m.btn_title_register()}</SubmitButton>
+		<Link class="btn preset-filled-surface-500" href="/works">{m.btn_title_cancel()}</Link>
 	</div>
 </form>
 
