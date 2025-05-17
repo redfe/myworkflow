@@ -2,51 +2,14 @@
 	import cytoscape from 'cytoscape';
 	import { onMount } from 'svelte';
 
-	let cy: any | null = $state();
+	let { data } = $props();
+	let cy: cytoscape.Core | undefined = $state();
 
 	onMount(() => {
 		cy = cytoscape({
 			container: document.getElementById('cy'),
 
-			elements: [
-				// ノード定義
-				{ data: { id: 'sato', label: '佐藤さん' } },
-				{ data: { id: 'takahashi', label: '高橋さん' } },
-				{ data: { id: 'suzuki', label: '鈴木さん' } },
-				{ data: { id: 'ito', label: '伊藤さん' } },
-				{ data: { id: 'tanaka', label: '田中さん' } },
-				{ data: { id: 'kato', label: '加藤さん' } },
-				{ data: { id: 'gyoumu', label: '業務管理システム' } },
-				{ data: { id: 'seisan', label: '生産管理システム' } },
-
-				// エッジ（線）定義
-				{ data: { id: 'sato-to-suzuki', source: 'sato', target: 'suzuki' } },
-				{
-					data: {
-						id: 'takahashi-to-gyoumu',
-						source: 'takahashi',
-						target: 'gyoumu'
-					}
-				},
-				{
-					data: {
-						id: 'suzuki-to-gyoumu',
-						source: 'suzuki',
-						target: 'gyoumu'
-					}
-				},
-				{ data: { id: 'gyoumu-to-tanaka', source: 'gyoumu', target: 'tanaka' } },
-				{ data: { id: 'tanaka-to-ito', source: 'tanaka', target: 'ito' } },
-				{ data: { id: 'ito-to-gyoumu', source: 'ito', target: 'gyoumu' } },
-				{ data: { id: 'gyoumu-to-kato', source: 'gyoumu', target: 'kato' } },
-				{
-					data: {
-						id: 'seisan-to-tanaka',
-						source: 'seisan',
-						target: 'tanaka'
-					}
-				}
-			],
+			elements: data.elements,
 
 			style: [
 				{
@@ -58,7 +21,7 @@
 						'background-color': '#C0E8D5',
 						'text-wrap': 'wrap',
 						'text-max-width': '100px',
-						'font-size': '5px'
+						'font-size': '12px'
 					}
 				},
 				{
@@ -68,8 +31,7 @@
 						'target-arrow-shape': 'triangle',
 						'target-arrow-color': '#aaa',
 						'line-color': '#aaa',
-						width: 2,
-						label: 'data(label)',
+						width: 1,
 						'font-size': '8px',
 						'text-background-color': '#fff',
 						'text-background-opacity': 1,
@@ -84,6 +46,35 @@
 				padding: 30
 			}
 		});
+
+		cy.on('tap', (evt) => {
+			var tappedNode = evt.target; // クリックされたノードを取得
+			var targetGroup = tappedNode.data('group'); // クリックされたノードの 'group' 値を取得
+
+			if (!targetGroup) return;
+
+			// まず、すべての強調表示をリセットする（オプション）
+			cy!.elements().removeClass('highlighted-group');
+
+			// 同じ 'group' 値を持つノードを選択
+			var edgesToHighlight = cy!.edges().filter((n) => n.attr('group') === targetGroup);
+
+			// 強調表示する要素にクラスを追加
+			edgesToHighlight.addClass('highlighted-group');
+		});
+
+		// スタイルシートで 'highlighted-group' クラスのスタイルを定義
+		cy.style()
+			.selector('.highlighted-group')
+			.style({
+				'background-color': 'blue',
+				'line-color': 'blue',
+				'target-arrow-color': 'blue',
+				width: 3,
+				opacity: 1,
+				label: 'data(label)'
+			})
+			.update();
 	});
 </script>
 
