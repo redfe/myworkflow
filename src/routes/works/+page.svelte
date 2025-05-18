@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { Link } from '$lib/components/Link';
+	import { SubmitButton } from '$lib/components/SubmitButton/index.js';
 	import { m } from '$lib/paraglide/messages';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { DeleteIcon, EditIcon } from '@lucide/svelte';
@@ -10,6 +11,11 @@
 	const headerButtonClass = 'hover:bg-surface-100-900 rounded-container p-1';
 
 	let { data } = $props();
+	let deleting: number[] = $state([]);
+
+	function isDeleting(id: number) {
+		return deleting.includes(id);
+	}
 </script>
 
 <div class="mb-4">
@@ -37,6 +43,7 @@
 {#snippet work(item: (typeof data.works)[number])}
 	<div
 		class="card preset-outlined-surface-300-700 flex flex-col gap-2 overflow-hidden p-2"
+		class:preset-filled-surface-100-900={isDeleting(item.id)}
 		out:slide
 	>
 		<div class="flex w-full flex-row justify-start gap-2">
@@ -70,20 +77,35 @@
 {/snippet}
 
 {#snippet editButton(title: string, id: number, Icon: Component)}
-	<a href={localizeHref(`/works/${id}/update`)} {title} class={headerButtonClass}><Icon /></a>
+	{#if isDeleting(id)}
+		<Icon />
+	{:else}
+		<a href={localizeHref(`/works/${id}/update`)} {title} class={headerButtonClass}><Icon /></a>
+	{/if}
 {/snippet}
 
 {#snippet deleteButton(title: string, id: number, Icon: Component)}
-	<form method="POST" action="?/delete" use:enhance>
+	<form
+		method="POST"
+		action="?/delete"
+		use:enhance={() => {
+			deleting = [...deleting, id];
+			return async ({ update }) => {
+				await update();
+				deleting = deleting.filter((_id) => _id !== id);
+			};
+		}}
+	>
 		<input type="hidden" name="id" value={id} />
-		<button
+		<SubmitButton
+			submitting={isDeleting(id)}
 			{title}
 			class={headerButtonClass}
 			onclick={(e) => {
 				if (!confirm('削除しますか？')) {
 					e.preventDefault();
 				}
-			}}><Icon /></button
+			}}><Icon /></SubmitButton
 		>
 	</form>
 {/snippet}
