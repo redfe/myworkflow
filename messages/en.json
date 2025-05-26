@@ -30,10 +30,11 @@
 	"btn_title_register": "Register",
 	"error_empty": "{name} should not be empty",
 	"error_not_selected": "{name} should not be not selected",
-	"error_max_length": "{name}は{length}文字以内で入力してください",
+	"error_max_length": "{name} should be within {length} characters",
 	"work_description": "Work",
 	"btn_title_update": "Update",
 	"btn_title_delete": "Delete",
 	"msg_confirm_delete": "delete?",
-	"page_title_workflow": "Work flow"
+	"page_title_workflow": "Workflow",
+	"page_title_update_work": "Edit Work"
 }
