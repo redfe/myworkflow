@@ -88,7 +88,9 @@
 	</div>
 </form>
 
-<SuperDebug display={dev} data={$form} />
+<div class="mt-4">
+	<SuperDebug display={dev} data={$form} />
+</div>
 
 {#snippet workElementOptions()}
 	<option value=""></option>
