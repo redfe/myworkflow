@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { Link } from '$lib/components/Link';
 	import { m } from '$lib/paraglide/messages';
-	import SuperDebug, { superForm } from 'sveltekit-superforms';
-	import { dev } from '$app/environment';
+	import { superForm } from 'sveltekit-superforms';
 	import { SubmitButton } from '$lib/components/SubmitButton';
+	import { SuperDebugWrapper } from '$lib/components/SuperDebugWrapper';
 
 	let { data } = $props();
 	let { form, errors, constraints, submitting, enhance } = superForm(data.form);
@@ -88,9 +88,7 @@
 	</div>
 </form>
 
-<div class="mt-4">
-	<SuperDebug display={dev} data={$form} />
-</div>
+<SuperDebugWrapper data={$form} class="mt-4" />
 
 {#snippet workElementOptions()}
 	<option value=""></option>
