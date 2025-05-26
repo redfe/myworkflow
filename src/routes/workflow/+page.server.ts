@@ -21,7 +21,7 @@ async function getElements(userId: string) {
 					id: randomUUID(),
 					source: work.inputElement!.name,
 					target: userId,
-					label: work.inputInformation,
+					label: '入力:' + work.inputInformation,
 					workDescription: work.workDescription,
 					workerId: userId
 				}
@@ -32,7 +32,7 @@ async function getElements(userId: string) {
 					id: randomUUID(),
 					source: userId,
 					target: work.outputElement!.name,
-					label: work.outputInformation,
+					label: '出力:' + work.outputInformation,
 					workDescription: work.workDescription,
 					workerId: userId
 				}
