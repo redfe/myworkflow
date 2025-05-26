@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { Link } from '$lib/components/Link';
-	import { SubmitButton } from '$lib/components/SubmitButton/index.js';
+	import { SubmitButton } from '$lib/components/SubmitButton';
 	import { m } from '$lib/paraglide/messages';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { DeleteIcon, EditIcon } from '@lucide/svelte';

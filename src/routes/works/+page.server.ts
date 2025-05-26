@@ -1,9 +1,9 @@
 import { getAllWorks } from '$lib/db';
 import { superValidate } from 'sveltekit-superforms';
-import { DeleteWorkSchema } from './schema.js';
+import { DeleteWorkSchema } from './schema';
 import { classvalidator } from 'sveltekit-superforms/adapters';
 import { fail } from '@sveltejs/kit';
-import { deleteWork } from '$lib/db/commands.js';
+import { deleteWork } from '$lib/db/commands';
 
 const defaults = new DeleteWorkSchema();
 

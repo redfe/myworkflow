@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { setLocale } from '$lib/paraglide/runtime';
-	import { m } from '$lib/paraglide/messages.js';
+	import { m } from '$lib/paraglide/messages';
 </script>
 
 <pre class="pre my-4">{m.msg_hello_world({ name: 'SvelteKit User' })}</pre>
