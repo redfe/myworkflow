@@ -1,12 +1,12 @@
 import { error, fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { UpdateWorkSchema } from './schema';
 import { superValidate } from 'sveltekit-superforms';
 import { classvalidator } from 'sveltekit-superforms/adapters';
 import { updateWork } from '$lib/db/commands';
 import { getAllWorkElement, getWork } from '$lib/db';
+import { WorkSchema } from '$lib/components/WorkForm/schema';
 
-const defaults = new UpdateWorkSchema();
+const defaults = new WorkSchema();
 
 export const load = async ({ params, locals }) => {
 	const id = Number(params.id);
@@ -26,7 +26,7 @@ export const load = async ({ params, locals }) => {
 		outputInformation: work.outputInformation!
 	};
 
-	const form = await superValidate(formData, classvalidator(UpdateWorkSchema, { defaults }));
+	const form = await superValidate(formData, classvalidator(WorkSchema, { defaults }));
 	const workElements = await getAllWorkElement();
 	return { form, workElements };
 };
@@ -34,7 +34,7 @@ export const load = async ({ params, locals }) => {
 export const actions = {
 	update: async ({ request, locals, params }) => {
 		const id = Number(params.id);
-		const form = await superValidate(request, classvalidator(UpdateWorkSchema, { defaults }));
+		const form = await superValidate(request, classvalidator(WorkSchema, { defaults }));
 
 		if (!form.valid) {
 			return fail(400, { form });
