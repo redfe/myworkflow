@@ -1,1 +1,49 @@
-{"routes":[],"auth":{"rolesSource":"/api/getRolesForUsers","identityProviders":{"azureActiveDirectory":{"registration":{"openIdIssuer":"https://login.microsoftonline.com/3338aa21-49ea-4534-a559-cae250aaf893","clientIdSettingName":"AZURE_CLIENT_ID","clientSecretSettingName":"AZURE_CLIENT_SECRET_APP_SETTING_NAME"}}}}}
+{
+	"routes": [
+		{
+			"route": "*",
+			"methods": ["POST", "PUT", "DELETE"],
+			"rewrite": "/api/__render",
+			"allowedRoles": ["authenticated"]
+		},
+		{
+			"route": "/_app/immutable/*",
+			"headers": {
+				"cache-control": "public, immutable, max-age=31536000"
+			}
+		},
+		{
+			"route": "/index.html",
+			"rewrite": "/api/__render",
+			"allowedRoles": ["authenticated"]
+		},
+		{
+			"route": "/",
+			"rewrite": "/api/__render",
+			"allowedRoles": ["authenticated"]
+		},
+
+		{
+			"route": "*",
+			"methods": ["GET"],
+			"allowedRoles": ["authenticated"]
+		}
+	],
+	"auth": {
+		"identityProviders": {
+			"azureActiveDirectory": {
+				"registration": {
+					"openIdIssuer": "https://login.microsoftonline.com/3338aa21-49ea-4534-a559-cae250aaf893",
+					"clientIdSettingName": "AZURE_CLIENT_ID",
+					"clientSecretSettingName": "AZURE_CLIENT_SECRET_APP_SETTING_NAME"
+				}
+			}
+		}
+	},
+	"navigationFallback": {
+		"rewrite": "/api/__render"
+	},
+	"platform": {
+		"apiRuntime": "node:18"
+	}
+}
