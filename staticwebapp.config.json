@@ -3,8 +3,14 @@
 		{
 			"route": "*",
 			"methods": ["POST", "PUT", "DELETE"],
-			"rewrite": "/api/__render",
+			"rewrite": "/api/sk_render",
 			"allowedRoles": ["authenticated"]
+		},
+		{
+			"route": "/api/*"
+		},
+		{
+			"route": "/data-api/*"
 		},
 		{
 			"route": "/_app/immutable/*",
@@ -14,12 +20,12 @@
 		},
 		{
 			"route": "/index.html",
-			"rewrite": "/api/__render",
+			"rewrite": "/api/sk_render",
 			"allowedRoles": ["authenticated"]
 		},
 		{
 			"route": "/",
-			"rewrite": "/api/__render",
+			"rewrite": "/api/sk_render",
 			"allowedRoles": ["authenticated"]
 		},
 
@@ -40,8 +46,14 @@
 			}
 		}
 	},
+	"responseOverrides": {
+		"401": {
+			"redirect": "/.auth/login/aad?post_login_redirect_uri=.referrer",
+			"statusCode": 302
+		}
+	},
 	"navigationFallback": {
-		"rewrite": "/api/__render"
+		"rewrite": "/api/sk_render"
 	},
 	"platform": {
 		"apiRuntime": "node:18"
