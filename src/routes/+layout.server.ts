@@ -1,6 +1,6 @@
 import type { LayoutServerLoad } from './$types';
 import { m } from '$lib/paraglide/messages';
-import { DATABASE_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 /**
  * ルートレイアウトのサーバーサイドロード関数
@@ -11,6 +11,6 @@ export const load: LayoutServerLoad = (event) => {
 		title: m.page_title_home(),
 		breadCrumbs: [],
 		userId: event.locals.userId,
-		DBURL: DATABASE_URL
+		DBURL: env.DATABASE_URL
 	};
 };
