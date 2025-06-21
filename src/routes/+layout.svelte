@@ -48,7 +48,7 @@
 				class="preset-filled-surface-50-950 mt-15 min-h-150 p-4"
 				style:min-height="calc(100lvh - 58px - 58px)"
 			>
-				<div>HEADERS: {page.data.userId}</div>
+				<div>HEADERS: {page.data.DBURL}</div>
 				{@render main()}
 			</main>
 			<footer class="preset-filled-surface-50-950 border-surface-100-900 w-full p-4 sm:pb-4">
