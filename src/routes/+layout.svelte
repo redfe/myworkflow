@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { page } from '$app/state';
+	import { page, navigating } from '$app/state';
 	import { goto } from '$app/navigation';
 	import { localizeUrl } from '$lib/paraglide/runtime';
 	import { BreadCrumbs } from '$lib/components/BreadCrumbs';
@@ -12,7 +12,9 @@
 
 	let { children } = $props();
 	let isExpanded = $state(getExpanded() ?? true);
-	let navId: NavId | undefined = $derived(getNavId(page.route.id));
+	let navId: NavId | undefined = $derived(
+		getNavId(navigating.to?.route.id ? navigating.to.route.id : page.route.id)
+	);
 	let breadCrumbs = $derived(page.data.breadCrumbs);
 	let pageTitle = $derived(page.data.title);
 
@@ -48,7 +50,11 @@
 				class="preset-filled-surface-50-950 mt-15 min-h-150 p-4"
 				style:min-height="calc(100lvh - 58px - 58px)"
 			>
-				{@render main()}
+				{#if navigating.from || navigating.to || navigating.complete}
+					<p class="p-4">読み込み中...</p>
+				{:else}
+					{@render main()}
+				{/if}
 			</main>
 			<footer class="preset-filled-surface-50-950 border-surface-100-900 w-full p-4 sm:pb-4">
 				{@render footer()}
