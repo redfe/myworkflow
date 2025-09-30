@@ -14,6 +14,5 @@ export function getExpanded() {
 export function setExpanded(isExpanded: boolean) {
 	// サーバーサイドでも機能するようにcookie に設定する
 	if (!browser) return;
-	console.log('setExpanded', isExpanded);
 	localStorage?.setItem(key, isExpanded.toString());
 }
